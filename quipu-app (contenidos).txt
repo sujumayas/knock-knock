@@ -1,0 +1,113 @@
+------------------------------------------
+- - - - - - - - APLICACION - - - - - - - -
+------------------------------------------
+
+
+1. 	USUARIOS 
+La aplicación debe ser accesible por usuarios (tutores/tutores-coordinadores). Los tutores son los usuarios normales, y los tutores-coordinadores son los administradores. Las facultades de los tutores (usuarios normales) son: 
+
+	A) TUTOR
+
+	Manejo de eventos: 
+		a. Crear eventos (con ciertas reglas). > Tiene la obligación de "eventualizar" a todos sus alumnos. 
+		b. Cancelar eventos
+		c. Marcar eventos como no-realizados y re-programarlos. 
+		d. Adjudicar alumnos dentro de sus grupos de acción a los eventos que genera. 
+		e. Pedir/sugerir cambio de aula. (DE HECHO CADA TUTOR DEBERIA TENER -IDEALMENTE- ADJUDICADA UN AULA PRIVILEGIADA LA CUAL SIEMPRE QUE SE PUEDA SE LE ASIGNA)
+		f. Marcar asistencia o inasistencia de los alumnos tanto para marcar tutorías no-realizada como a tutorías grupales realizadas. 
+	
+	Manejo de Alumnos:
+		a. Enviar informes sobre los alumnos --> a los coordinadores.
+		b. Ver datos públicos sobre los alumnos: Nombres, apellidos, telefono, email, etc. 
+
+
+	B) TUTOR-COORDINADOR
+
+	Manejo de eventos: 
+		a. Control absoluto sobre los horarios de todos los usuarios. 
+		b. Cancelar eventos (y que se envíe emails a los usuarios-tutores afectados).
+		c. Imprimir pantallazos con horarios por salón (para pegar en cada salón). 
+
+	Manejo de Alumnos: 
+		a. Adjudicar alumnos a usuarios-tutores y separarlos por grupos. 
+		b. Generar alumnos. 
+
+2. ALUMNOS
+Los alumnos no serán usuarios, así que simplemente serán OBJETOS - ALUMNOS que se relacionarán entre ellos a modo de GRUPO, a su vez en relación con un TUTOR. Cada GRUPO tendrá 1 TUTOR. 
+
+	Atributos: 
+		a. Permanentes: Nombre, apellidos, dni, edad, fecha de nacimiento, email, teléfono, carrera, tipo de beca, region de origen, etc. 
+		b. Temporales: Ciclo, horario, nivel de riesgo, tutor, grupo, activo/inactivo, etc. 
+	
+
+	Algunas reglas de creación automática de grupos:
+		a. HORARIOS
+		b. 1 Tutor por grupo.
+		c. Preferiblemente, grupos del mismo nivel de riesgo. 
+		d. Alumnos se separan por ciclos
+		e. Alumnos especiales "esperan" a ser adjudicados a su GRUPO de manera manual. 
+
+
+3. EVENTOS
+Los eventos son objetos temporales que tienen cuatro posibles estados: 
+
+	Programado   	
+		Un evento está programado cuando se ha seleccionado una fecha para un alumno (o más) y un tutor, y se ha confirmado que tiene lugar. 
+
+	Cancelado  		
+		Un evento puede ser cancelado (por mutuo acuerdo entre un alumno y el tutor) y el tutor debe marcarlo como cancelado. Esto libera el espacio anteriormente programado. 
+
+	Realizado 		
+		Un evento está realizado cuando ha pasado su fecha y contiene comentarios sobre lo sucedido en esa sesión. 
+
+	No-realizado   
+		Un evento es marcado como no-realizado cuando es marcado por su tutor como no-realizado. Esto recién le abre la posibilidad de re-coordinarlo? (ESTO PRESENTA PROBLEMAS, PORQUE TIENES QUE TRIANGULAR CON LA APLICACION PARA PODER RE-PROGRAMAR!!!)
+
+
+	TIPOS: 
+
+		Tutorías Individual
+			(1 ALUMNO + 1 TUTOR + 1 AULA + 1 Fecha) 
+
+		Tutoría Grupal
+			(8 ALUMNO + 1 TUTOR + 1 AULA + 1 Fecha)
+
+	Para cualquier tipo de evento, es el TUTOR el que hace seguimiento y el TUTOR-COORDINADOR el que evalua y accede a las estadísticas totales. 
+
+------------------------------------------
+- - - - - - - - EVALUACION - - - - - - - -
+------------------------------------------
+
+EVALUACION DEL PROGRAMA: 
+
+	1. ¿EL PROGRAMA LE SIRVE AL TUTOR-COORDINADOR PARA SUPERVISAR LA ASISTENCIA DE ALUMNOS?
+	2. ¿EL PROGRAMA LE SIRVE AL TUTOR-COORDINADOR PARA SUPVERVISAR LA ASISTENCIA DE TUTORES?
+	3. ¿EL PROGRAMA NOS SIRVE PARA QUE NO HAYA PROBLEMAS DE CRUCES DE HORARIOS? 
+	4. ¿EL PROGRAMA NOS SIRVE PARA QUE LOS ALUMNOS ASISTAN MAS A LAS TUTORÍAS?
+	5. ¿EL PROGRAMA NOS SIRVE PARA RELLENAR -- CUALQUIER POSIBLE -- FORMATO DEL PRONABEC DE FORMA MÁS RÁPIDA?
+	6. ¿EL PROGRAMA NOS SIRVE PARA REALIZAR UN MEJOR SEGUIMIENTO DE LOS ALUMNOS CON PROBLEMAS?
+	7. ¿EL PROGRAMA NOS SIRVE PARA REALIZAR EVALUACIONES DEL SISTEMA DE TUTORÍAS DE MANERA SENCILLA?
+
+
+
+PASOS DE CONSTRUCCION DE LA APLICACION:
+
+
+	1. Construir un TUTOR-COORDINADOR (super-usuario).
+	2. Ver la forma de construir 8 ALUMNOS modelo (nivel de riesgo bajo) como si viniesen de una base de datos. 
+	3. Crear la funcionalidad que le permita al TUTOR-COORDINADOR crear un usuario TUTOR, un GRUPO y ligar ambos con los ALUMNOS. 
+	4. Ingresar como TUTOR-COORDINADOR. 
+	4. Crear un TUTOR y adjudicarle un aula predilecta. 
+	5. Crear un GRUPO con los ALUMNOS creados y adjudicarle el TUTOR creado. 
+	6. Ingresar como TUTOR. 
+	7. Crear EVENTOS para cada tutoría individual y tutoría grupal con cada ALUMNO del GRUPO. 
+	8. Cancelar un evento
+	9. Marcar un evento como realizado y rellenar sus contenidos. 
+	10. Marcar un evento como no-realizado. 
+
+
+
+
+
+
+
